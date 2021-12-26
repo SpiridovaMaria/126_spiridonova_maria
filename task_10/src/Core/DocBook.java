@@ -11,6 +11,9 @@ public class DocBook {
         if(number == null){
             throw new IllegalArgumentException("number cannot be null");
         }
+        if(date == null){
+            throw new IllegalArgumentException("date cannot be null");
+        }
         docCount++;
     }
     public int getDocCount(){
