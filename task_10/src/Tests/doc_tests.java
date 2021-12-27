@@ -29,4 +29,10 @@ public class doc_tests extends Assert {
         var exc = assertThrows(IllegalArgumentException.class, () -> docBook.addDoc("number",null));
         assertTrue(exc.getMessage().toLowerCase().contains("date cannot be null"));
     }
+    @Test
+    public void addDoc_addDocWithNullNumberAndNullDate_ThrowsException(){
+        DocBook docBook = DocBook.create();
+        var exc = assertThrows(IllegalArgumentException.class, () -> docBook.addDoc(null,null));
+        assertTrue(exc.getMessage().toLowerCase().contains("number and date cannot be null"));
+    }
 }
