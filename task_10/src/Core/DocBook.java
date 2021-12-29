@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class DocBook {
 
-    private HashMap<String, String> docBook;
+    private HashMap<String, String> data;
 
     private DocBook(){
-        docBook = new HashMap<>();
+        data = new HashMap<>();
     }
 
     public void addDoc(String number, String date){
@@ -22,12 +22,13 @@ public class DocBook {
         if(!error.isEmpty()){
             throw new IllegalArgumentException(error.toString());
         }
-        else{
-            docBook.put(number, date);
+        if(!data.containsKey(number)){
+            data.put(number, date);
         }
+
     }
     public int getDocCount(){
-        return docBook.size();
+        return data.size();
     }
     public static DocBook create(){
         return new DocBook();
