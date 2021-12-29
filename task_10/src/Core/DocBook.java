@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class DocBook {
 
-    private HashMap<String, String> data;
+    private HashMap<String, Document> data;
 
     private DocBook(){
         data = new HashMap<>();
@@ -23,7 +23,7 @@ public class DocBook {
             throw new IllegalArgumentException(error.toString());
         }
         if(!data.containsKey(number)){
-            data.put(number, date);
+            data.put(number, new Document(date));
         }
 
     }
@@ -32,5 +32,8 @@ public class DocBook {
     }
     public static DocBook create(){
         return new DocBook();
+    }
+    public HashMap<String, Document> getDocs(){
+        return data;
     }
 }
