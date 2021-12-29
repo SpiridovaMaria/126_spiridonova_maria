@@ -52,4 +52,14 @@ public class doc_tests extends Assert {
         docBook.registerPaymentDoc(100, 01, "number", "date");
         assertEquals(1,docBook.getDocs().get("number").getPaymentDocCount());
     }
+    @Test
+    public void registerPaymentDoc_registerPayDocWithData_PaymentDocCountEqualsThree(){
+        DocBook docBook = DocBook.create();
+
+        docBook.addDoc("number","date");
+        docBook.registerPaymentDoc(100, 01, "number", "20000101");
+        docBook.registerPaymentDoc(200, 02, "number", "20000202");
+        docBook.registerPaymentDoc(300, 03, "number", "20000303");
+        assertEquals(3,docBook.getDocs().get("number").getPaymentDocCount());
+    }
 }
