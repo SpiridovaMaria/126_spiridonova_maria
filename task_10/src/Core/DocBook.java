@@ -41,6 +41,7 @@ public class DocBook {
         if(sum<0){
             error.append("sum is a positive number\n");
         }
+
         if(!error.isEmpty()){
             throw new IllegalArgumentException(error.toString());
         }

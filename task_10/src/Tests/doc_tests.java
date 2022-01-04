@@ -74,4 +74,13 @@ public class doc_tests extends Assert {
                 docBook.registerPaymentDoc(-100, 01, "number", TypeOfPaymentDoc.PaymentOrder, "20030204"));
         assertTrue(exc.getMessage().toLowerCase().contains("sum is a positive number"));
     }
+    @Test
+    public void registerPaymentDoc_registerPayDocWithPaymentDocNumberLessThenZero_TrowsException(){
+        DocBook docBook = DocBook.create();
+        docBook.addDoc("number","date");
+
+        var exc = assertThrows(IllegalArgumentException.class, () ->
+                docBook.registerPaymentDoc(100, -7, "number", TypeOfPaymentDoc.PaymentOrder, "20030204"));
+        assertTrue(exc.getMessage().toLowerCase().contains("number of payment document is a positive number"));
+    }
 }
