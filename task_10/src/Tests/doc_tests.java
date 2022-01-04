@@ -11,6 +11,7 @@ public class doc_tests extends Assert {
         DocBook docBook = DocBook.create();
         assertEquals(0,docBook.getDocCount());
     }
+    //--------------------------------------------------------------------------
     @Test
     public void addDoc_addDocWithNumberAndDate_DocCountEqualsOne(){
         DocBook docBook = DocBook.create();
@@ -37,6 +38,8 @@ public class doc_tests extends Assert {
         assertTrue(exc.getMessage().toLowerCase().contains("number cannot be null") &&
                 exc.getMessage().toLowerCase().contains("date cannot be null"));
     }
+
+    //--------------------------------------------------------------
     @Test
     public void registerPaymentDoc_registerPayDocWithoutData_PaymentDocCountEqualsZero(){
         DocBook docBook = DocBook.create();
@@ -61,5 +64,13 @@ public class doc_tests extends Assert {
         docBook.registerPaymentDoc(200, 02, "number", TypeOfPaymentDoc.PaymentOrder, "20100305");
         docBook.registerPaymentDoc(300, 03, "number", TypeOfPaymentDoc.BankOrder, "20000303");
         assertEquals(3,docBook.getDocs().get("number").getPaymentDocCount());
+    }
+    @Test
+    public void registerPaymentDoc_registerPayDocWithSumLessThenZero_TrowsException(){
+        DocBook docBook = DocBook.create();
+
+        var exc = assertThrows(IllegalArgumentException.class, () ->
+                docBook.registerPaymentDoc(-100, 01, "number", TypeOfPaymentDoc.PaymentOrder, "20030204"));
+        assertTrue(exc.getMessage().toLowerCase().contains("sum is a positive number"));
     }
 }
