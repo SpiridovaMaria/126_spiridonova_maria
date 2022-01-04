@@ -37,6 +37,13 @@ public class DocBook {
         return data;
     }
     public void registerPaymentDoc(int sum, int paymentDocNumber, String docNumber,TypeOfPaymentDoc type, String date) {
+        StringBuilder error = new StringBuilder();
+        if(sum<0){
+            error.append("sum is a positive number\n");
+        }
+        if(!error.isEmpty()){
+            throw new IllegalArgumentException(error.toString());
+        }
         data.get(docNumber).registerPaymentDoc(sum,paymentDocNumber,type, date);
     }
 }

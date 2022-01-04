@@ -68,6 +68,7 @@ public class doc_tests extends Assert {
     @Test
     public void registerPaymentDoc_registerPayDocWithSumLessThenZero_TrowsException(){
         DocBook docBook = DocBook.create();
+        docBook.addDoc("number","date");
 
         var exc = assertThrows(IllegalArgumentException.class, () ->
                 docBook.registerPaymentDoc(-100, 01, "number", TypeOfPaymentDoc.PaymentOrder, "20030204"));

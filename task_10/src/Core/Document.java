@@ -11,6 +11,7 @@ public class Document {
         paymentDocs = new HashMap<>();
     }
     public void registerPaymentDoc(int summ, int number, TypeOfPaymentDoc type, String date){
+
         paymentDocs.put(number,new PaymentDoc(summ,type,date));
     }
 
