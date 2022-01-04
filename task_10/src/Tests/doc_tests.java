@@ -3,6 +3,8 @@ package Tests;
 import org.junit.*;
 import Core.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class doc_tests extends Assert {
@@ -82,5 +84,23 @@ public class doc_tests extends Assert {
         var exc = assertThrows(IllegalArgumentException.class, () ->
                 docBook.registerPaymentDoc(100, -7, "number", TypeOfPaymentDoc.PaymentOrder, "20030204"));
         assertTrue(exc.getMessage().toLowerCase().contains("number of payment document is a positive number"));
+    }
+
+    //------------------------------------------------------------------------------------------------------------
+    @Test
+    public void getList_getListOfAllPayments_equalLists(){
+        DocBook docBook = DocBook.create();
+        docBook.addDoc("number","date");
+        docBook.registerPaymentDoc(100, 01, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
+        docBook.registerPaymentDoc(500, 02, "number", TypeOfPaymentDoc.BankOrder, "20030204");
+        docBook.registerPaymentDoc(300, 03, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
+
+        List<Integer> paymentDocs = new ArrayList();
+        paymentDocs.add(100);
+        paymentDocs.add(500);
+        paymentDocs.add(300);
+
+        assertArrayEquals(paymentDocs.toArray(),docBook.getAllPayments("number").toArray());
+
     }
 }
