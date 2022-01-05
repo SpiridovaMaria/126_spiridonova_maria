@@ -106,7 +106,7 @@ public class doc_tests extends Assert {
 
     // -------------------------------------------------------------------------------------------------------------------
     @Test
-    public void deletePaymentDoc_DeletePaymentDocWithDocNumberNumberAndDate_PaymentsCountEqualsZero(){
+    public void deletePaymentDoc_DeletePaymentDocWithDocNumberNumberAndDate_PaymentDocCountEqualsZero(){
         DocBook docBook = DocBook.create();
         docBook.addDoc("number","20110825");
         docBook.registerPaymentDoc(100,2, "number", TypeOfPaymentDoc.PaymentOrder,"20110919");
