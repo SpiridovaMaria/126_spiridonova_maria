@@ -103,4 +103,18 @@ public class doc_tests extends Assert {
         assertArrayEquals(paymentDocs.toArray(),docBook.getAllPayments().toArray());
 
     }
+
+    // -------------------------------------------------------------------------------------------------------------------
+    @Test
+    public void deletePaymentDoc_DeletePaymentDocWithDocNumberNumberAndDate_PaymentsCountEqualsZero(){
+        DocBook docBook = DocBook.create();
+        docBook.addDoc("number","20110825");
+        docBook.registerPaymentDoc(100,2, "number", TypeOfPaymentDoc.PaymentOrder,"20110919");
+        docBook.registerPaymentDoc(100,1, "number", TypeOfPaymentDoc.PaymentOrder,"20150321");
+
+        docBook.deletePayment( "number", 2, "20110919");
+        docBook.deletePayment( "number", 1, "20150321");
+        assertEquals(0, docBook.getDocs().get("number").getPaymentDocCount());
+    }
+
 }
