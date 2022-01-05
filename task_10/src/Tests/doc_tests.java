@@ -100,7 +100,7 @@ public class doc_tests extends Assert {
         paymentDocs.add(500);
         paymentDocs.add(300);
 
-        assertArrayEquals(paymentDocs.toArray(),docBook.getAllPayments("number").toArray());
+        assertArrayEquals(paymentDocs.toArray(),docBook.getAllPayments().toArray());
 
     }
 }

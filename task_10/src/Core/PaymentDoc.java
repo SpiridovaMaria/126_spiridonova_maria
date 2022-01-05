@@ -1,14 +1,17 @@
 package Core;
 
 public class PaymentDoc {
-    private int summ;
+    private int sum;
     private String date;
     private TypeOfPaymentDoc type;
 
-    public PaymentDoc(int summ, TypeOfPaymentDoc type, String date) {
-        this.summ = summ;
+    public PaymentDoc(int sum, TypeOfPaymentDoc type, String date) {
+        this.sum = sum;
         this.type=type;
         this.date = date;
+    }
+    public int getSum(){
+        return sum;
     }
 
 }
