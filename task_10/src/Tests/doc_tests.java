@@ -121,9 +121,26 @@ public class doc_tests extends Assert {
     public void getGeneralSum_CalculateDocGeneralSumOfPayments_GeneralSumEquals400(){
        DocBook docBook = DocBook.create();
         docBook.addDoc("123","20200327");
-        docBook.registerPaymentDoc(300,101,"123", TypeOfPaymentDoc.BankOrder, "20211219");
-        docBook.registerPaymentDoc(100,102,"123", TypeOfPaymentDoc.BankOrder, "20211219");
+        docBook.registerPaymentDoc(300,101,"123", TypeOfPaymentDoc.BankOrder, "20211229");
+        docBook.registerPaymentDoc(100,102,"123", TypeOfPaymentDoc.BankOrder, "20181109");
         assertEquals(400, docBook.getDocs().get("123").getSumOfPayments());
     }
+    //------------------------------------------------------------------------------
+    @Test
+    public void getListOfPayments_GetAllPaymentsFromDoc_EqualLists(){
+        DocBook docBook = DocBook.create();
+        docBook.addDoc("123","20200327");
+        docBook.registerPaymentDoc(200,101,"123", TypeOfPaymentDoc.BankOrder, "20211229");
+        docBook.registerPaymentDoc(100,102,"123", TypeOfPaymentDoc.BankOrder, "20181109");
+        docBook.addDoc("321","20200327");
+        docBook.registerPaymentDoc(500,101,"321", TypeOfPaymentDoc.BankOrder, "20211229");
+        docBook.registerPaymentDoc(400,102,"321", TypeOfPaymentDoc.BankOrder, "20181109");
 
+        List<Integer> sums = new ArrayList();
+        sums.add(200);
+        sums.add(100);
+
+        assertArrayEquals(sums.toArray(), docBook.getDocs().get("123").getListOfPayments().toArray());
+    }
+    
 }

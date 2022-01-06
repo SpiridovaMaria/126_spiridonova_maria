@@ -20,17 +20,12 @@ public class Document {
     public int getPaymentDocCount() {
         return paymentDocs.size();
     }
+
     public HashMap<Integer, PaymentDoc> getPaymentDocuments(){
         return paymentDocs;
     }
-    public List<Integer> getListOfPayments() {
-        List<Integer> payments = new ArrayList();
-        for(PaymentDoc paymentDoc : paymentDocs.values()){
-            payments.add(paymentDoc.getSum());
-        }
 
-        return payments;
-    }
+
     public int getSumOfPayments() {
        int sum=0;
         for(PaymentDoc doc : paymentDocs.values()){
