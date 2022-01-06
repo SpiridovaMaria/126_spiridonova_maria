@@ -5,7 +5,7 @@ import Core.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+
 
 public class doc_tests extends Assert {
     @Test
@@ -54,7 +54,7 @@ public class doc_tests extends Assert {
         DocBook docBook = DocBook.create();
 
         docBook.addDoc("number","date");
-        docBook.registerPaymentDoc(100, 01, "number", TypeOfPaymentDoc.BankOrder, "20000101");
+        docBook.registerPaymentDoc(100, 1, "number", TypeOfPaymentDoc.BankOrder, "20000101");
         assertEquals(1,docBook.getDocs().get("number").getPaymentDocCount());
     }
     @Test
@@ -62,9 +62,9 @@ public class doc_tests extends Assert {
         DocBook docBook = DocBook.create();
 
         docBook.addDoc("number","date");
-        docBook.registerPaymentDoc(100, 01, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
-        docBook.registerPaymentDoc(200, 02, "number", TypeOfPaymentDoc.PaymentOrder, "20100305");
-        docBook.registerPaymentDoc(300, 03, "number", TypeOfPaymentDoc.BankOrder, "20000303");
+        docBook.registerPaymentDoc(100, 1, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
+        docBook.registerPaymentDoc(200, 2, "number", TypeOfPaymentDoc.PaymentOrder, "20100305");
+        docBook.registerPaymentDoc(300, 3, "number", TypeOfPaymentDoc.BankOrder, "20000303");
         assertEquals(3,docBook.getDocs().get("number").getPaymentDocCount());
     }
     @Test
@@ -73,7 +73,7 @@ public class doc_tests extends Assert {
         docBook.addDoc("number","date");
 
         var exc = assertThrows(IllegalArgumentException.class, () ->
-                docBook.registerPaymentDoc(-100, 01, "number", TypeOfPaymentDoc.PaymentOrder, "20030204"));
+                docBook.registerPaymentDoc(-100, 1, "number", TypeOfPaymentDoc.PaymentOrder, "20030204"));
         assertTrue(exc.getMessage().toLowerCase().contains("sum is a positive number"));
     }
     @Test
@@ -91,9 +91,9 @@ public class doc_tests extends Assert {
     public void getList_getListOfAllPayments_equalLists(){
         DocBook docBook = DocBook.create();
         docBook.addDoc("number","date");
-        docBook.registerPaymentDoc(100, 01, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
-        docBook.registerPaymentDoc(500, 02, "number", TypeOfPaymentDoc.BankOrder, "20030204");
-        docBook.registerPaymentDoc(300, 03, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
+        docBook.registerPaymentDoc(100, 1, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
+        docBook.registerPaymentDoc(500, 2, "number", TypeOfPaymentDoc.BankOrder, "20030204");
+        docBook.registerPaymentDoc(300, 3, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
 
         List<Integer> paymentDocs = new ArrayList();
         paymentDocs.add(100);
