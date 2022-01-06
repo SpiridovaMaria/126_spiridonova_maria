@@ -8,6 +8,7 @@ public class Document {
     private String date;
     private HashMap<Integer, PaymentDoc> paymentDocs;
 
+
     public Document(String date){
         this.date = date;
         paymentDocs = new HashMap<>();
@@ -30,5 +31,11 @@ public class Document {
 
         return payments;
     }
-
+    public int getSumOfPayments() {
+       int sum=0;
+        for(PaymentDoc doc : paymentDocs.values()){
+            sum += doc.getSum();
+        }
+        return sum;
+    }
 }
