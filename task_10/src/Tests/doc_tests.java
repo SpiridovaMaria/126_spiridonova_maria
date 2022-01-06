@@ -142,5 +142,5 @@ public class doc_tests extends Assert {
 
         assertArrayEquals(sums.toArray(), docBook.getDocs().get("123").getListOfPayments().toArray());
     }
-    
+
 }

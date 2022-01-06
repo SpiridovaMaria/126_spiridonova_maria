@@ -33,4 +33,11 @@ public class Document {
         }
         return sum;
     }
+    public List<Integer> getListOfPayments() {
+        List<Integer> payments = new ArrayList();
+        for(PaymentDoc paymentDoc : paymentDocs.values()){
+            payments.add(paymentDoc.getSum());
+        }
+        return payments;
+    }
 }
