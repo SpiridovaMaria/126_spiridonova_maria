@@ -95,10 +95,19 @@ public class doc_tests extends Assert {
         docBook.registerPaymentDoc(500, 2, "number", TypeOfPaymentDoc.BankOrder, "20030204");
         docBook.registerPaymentDoc(300, 3, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
 
+        docBook.addDoc("number2","date");
+        docBook.registerPaymentDoc(400, 1, "number2", TypeOfPaymentDoc.PaymentOrder, "20030204");
+        docBook.registerPaymentDoc(700, 2, "number2", TypeOfPaymentDoc.BankOrder, "20030204");
+        docBook.registerPaymentDoc(800, 3, "number2", TypeOfPaymentDoc.PaymentOrder, "20030204");
+
         List<Integer> paymentDocs = new ArrayList();
         paymentDocs.add(100);
         paymentDocs.add(500);
         paymentDocs.add(300);
+
+        paymentDocs.add(400);
+        paymentDocs.add(700);
+        paymentDocs.add(800);
 
         assertArrayEquals(paymentDocs.toArray(),docBook.getAllPayments().toArray());
 
