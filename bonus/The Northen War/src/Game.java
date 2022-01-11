@@ -4,6 +4,15 @@ public class Game {
     private Field field;
     private Person person;
     private HiddenField hiddenField;
+    private int level;
+
+    public Game(){
+        level = 1;
+    }
+
+    public int levelMover(){
+        return level;
+    }
 
     public void run(String levelName) {
         prepareGame(levelName);
@@ -15,11 +24,19 @@ public class Game {
     }
 
     private void endingGame() {
-        if(person.getRightNumber()==0) {
-            System.out.println("Вы выиграли эту битву! Для завершения нажмите Enter");
+        if(person.getRightNumber()==0 && level<5) {
+            System.out.println("Вы выиграли эту битву и перешли на новый уровень!");
+            level++;
+            System.out.println(level+" уровень");
+            run("level_"+levelMover());
+        }
+        else if(person.getRightNumber()==0 && level == 5){
+            System.out.println("Поздравляю! Вы победили в войне, прорубив окно в Европу и сделав Россию могущественной державой! Для завершения нажмите Enter");
         }
         else{
-            System.out.println("К сожалению, вы проиграли! Для завершения нажмите Enter");
+            System.out.println("К сожалению, вы проиграли в битве! Но вы не проиграли войне! Возьмите реванш, чтобы разгромить врага!");
+            System.out.println(level+" уровень");
+            run("level_"+levelMover());
         }
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
