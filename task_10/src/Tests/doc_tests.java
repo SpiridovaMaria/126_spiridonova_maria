@@ -41,6 +41,13 @@ public class doc_tests extends Assert {
         assertTrue(exc.getMessage().toLowerCase().contains("number cannot be null") &&
                 exc.getMessage().toLowerCase().contains("date cannot be null"));
     }
+    @Test
+    public void addDoc_addAlreadyExistedDocNumber_ThrowsException(){
+        DocBook docBook = DocBook.create();
+        docBook.addDoc("number","date");
+        var exc = assertThrows(IllegalArgumentException.class, () -> docBook.addDoc("number","date"));
+        assertTrue(exc.getMessage().toLowerCase().contains("this document exists"));
+    }
 
     //--------------------------------------------------------------
     @Test
