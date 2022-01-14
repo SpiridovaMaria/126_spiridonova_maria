@@ -177,6 +177,6 @@ public class doc_tests extends Assert {
         list.put("123", 300);
         list.put("321", 900);
 
-        assertTrue(list.equals(docBook.getListOfAllDocsWithPayments));
+        assertTrue(list.equals(docBook.getListOfAllDocsWithPayments()));
     }
 }

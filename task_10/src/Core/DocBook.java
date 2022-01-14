@@ -1,9 +1,6 @@
 package Core;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class DocBook {
 
@@ -32,7 +29,6 @@ public class DocBook {
         }
         if(!data.containsKey(number)){
             data.put(number, new Document(date));
-            System.out.println("Документ зарегистрирован");
         }
 
     }
@@ -69,7 +65,7 @@ public class DocBook {
         }
         else {
             data.get(docNumber).registerPaymentDoc(sum, paymentDocNumber, type, date);
-            System.out.println("Платежный документ создан успешно!");
+
 
         }
     }
@@ -116,6 +112,13 @@ public class DocBook {
         Scanner sc = new Scanner(System.in);
         String command = sc.nextLine();
         run(command);
+    }
+    public HashMap<String, Integer> getListOfAllDocsWithPayments(){
+        HashMap<String, Integer> list = new HashMap();
+        for (Map.Entry<String, Document> entry: data.entrySet()){
+            list.put(entry.getKey(), entry.getValue().getSumOfPayments());
+        }
+        return list;
     }
 
      public void run(String command){
