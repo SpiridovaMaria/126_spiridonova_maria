@@ -127,14 +127,13 @@ public class doc_tests extends Assert {
         assertEquals(0, docBook.getDocs().get("number").getPaymentDocCount());
     }
     @Test
-    public void deletePaymentDoc_DeleteNonExistentPaymentDoc_EqualsOne(){
+    public void deletePaymentDoc_DeleteNonExistentPaymentDoc_ThrowsException(){
         DocBook docBook = DocBook.create();
         docBook.addDoc("number","20110825");
         docBook.registerPaymentDoc(100,2, "number", TypeOfPaymentDoc.PaymentOrder,"20110919");
 
-
-        docBook.deletePayment( "number", 1, "20150321");
-        assertEquals(1, docBook.getDocs().get("number").getPaymentDocCount());
+        var exc = assertThrows(IllegalArgumentException.class, () ->  docBook.deletePayment( "number", 1, "20150321"));
+        assertTrue(exc.getMessage().toLowerCase().contains("payment document does not exist"));
     }
     //-------------------------------------------------------------------
     @Test

@@ -87,7 +87,7 @@ public class DocBook {
         if(paymentDocDate == null){
             error.append("Date cannot be null\n");
         }
-        if(!data.get(docNumber).getPaymentDocuments().containsValue(paymentDocNumber)){
+        if(data.get(docNumber).getPaymentDocuments().get(paymentDocNumber)==null){
             error.append("Payment document does not exist\n");
         }
         if(!error.isEmpty()){
