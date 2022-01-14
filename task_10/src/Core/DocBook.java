@@ -103,20 +103,7 @@ public class DocBook {
         }
 
     }
-    public void commandList(){
-        System.out.println("1 - добавление договора");
-        System.out.println("2 - добавление платежного документа");
-        System.out.println("3 - вычисление суммы всех платежей по договору с заданным номером");
-        System.out.println("4 - ");
-        System.out.println("5 - ");
-        System.out.println("6 - ");
-        System.out.println("7 - ");
-        System.out.println("8 - ");
 
-        Scanner sc = new Scanner(System.in);
-        String command = sc.nextLine();
-        run(command);
-    }
     public HashMap<String, Integer> getListOfAllDocsWithPayments(){
         HashMap<String, Integer> list = new HashMap();
         for (Map.Entry<String, Document> entry: data.entrySet()){
@@ -124,52 +111,5 @@ public class DocBook {
         }
         return list;
     }
-
-     public void run(String command){
-
-        DocBook.create();
-
-         Scanner sc = new Scanner(System.in);
-         switch (command) {
-             case "1":
-                 System.out.println("Введите номер документа");
-                 String number = sc.nextLine();
-                 System.out.println("Введите дату");
-                 String date = sc.nextLine();
-                 addDoc(number, date);
-                 commandList();
-
-             case "2":
-                 System.out.println("Введите номер договора");
-                 String numberDoc = sc.nextLine();
-
-                 System.out.println("Введите дату");
-                 String datePay = sc.nextLine();
-
-                 System.out.println("Введите cумму");
-                 int sum = sc.nextInt();
-
-                 System.out.println("Введите номер");
-                 int numberPay = sc.nextInt();
-
-
-                 System.out.println("Какого типа платежный договор(введите 1, если банковский ордер, введите 2 - если платежное поручение) ");
-                 int type = sc.nextInt();
-
-                 if(type==1) registerPaymentDoc(sum, numberPay, numberDoc, TypeOfPaymentDoc.BankOrder, datePay);
-                 else if(type==2)  registerPaymentDoc(sum, numberPay, numberDoc, TypeOfPaymentDoc.PaymentOrder,  datePay);
-                 else System.out.println("неправильно введен тип платежного документа");
-
-                 commandList();
-             case "3":
-                 System.out.println("Введите номер договора");
-                 String docNumber = sc.nextLine();
-                 System.out.println(getDocs().get(docNumber).getSumOfPayments());
-                 commandList();
-             default:
-                 System.out.println("Неправильно введена команда!");
-         }
-
-     }
 
 }
