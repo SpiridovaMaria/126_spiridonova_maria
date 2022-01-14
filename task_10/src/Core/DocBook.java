@@ -24,6 +24,9 @@ public class DocBook {
         if(date == null){
             error.append("Date cannot be null\n");
         }
+        if(data.containsKey(number)){
+            error.append("this document exists\n");
+        }
         if(!error.isEmpty()){
             throw new IllegalArgumentException(error.toString());
         }
