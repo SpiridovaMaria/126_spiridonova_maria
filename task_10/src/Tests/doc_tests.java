@@ -4,6 +4,7 @@ import org.junit.*;
 import Core.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -162,5 +163,20 @@ public class doc_tests extends Assert {
         assertArrayEquals(sums.toArray(), docBook.getDocs().get("123").getListOfPayments().toArray());
     }
     //------------------------------------------------------------------------------------------
+    @Test
+    public void getListOfAllDocsWithPayments_GetAllDocWithPayments_EqualLists(){
+        DocBook docBook = DocBook.create();
+        docBook.addDoc("123","20200327");
+        docBook.registerPaymentDoc(200,101,"123", TypeOfPaymentDoc.BankOrder, "20211229");
+        docBook.registerPaymentDoc(100,102,"123", TypeOfPaymentDoc.BankOrder, "20181109");
+        docBook.addDoc("321","20200327");
+        docBook.registerPaymentDoc(500,101,"321", TypeOfPaymentDoc.BankOrder, "20211229");
+        docBook.registerPaymentDoc(400,102,"321", TypeOfPaymentDoc.BankOrder, "20181109");
 
+        HashMap<String, Integer> list= new HashMap<>();
+        list.put("123", 300);
+        list.put("321", 900);
+
+        assertTrue(list.equals(docBook.getListOfAllDocsWithPayments));
+    }
 }
