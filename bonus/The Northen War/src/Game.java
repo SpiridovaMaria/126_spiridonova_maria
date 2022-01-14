@@ -25,16 +25,17 @@ public class Game {
 
     private void endingGame() {
         if(person.getRightNumber()==0 && level<5) {
-            System.out.println("Вы выиграли эту битву и перешли на новый уровень!");
+            System.out.println("Вы выиграли эту битву, захватили город врага и перешли на новый уровень!");
             level++;
             System.out.println(level+" уровень");
+            System.out.println("Заряжай!");
             run("level_"+levelMover());
         }
         else if(person.getRightNumber()==0 && level == 5){
-            System.out.println("Поздравляю! Вы победили в войне, прорубив окно в Европу и сделав Россию могущественной державой! Для завершения нажмите Enter");
+            System.out.println("Поздравляю! Благодаря вам, Россия победила в войне, прорубив окно в Европу и став одной из самых могущественных держав! Для завершения нажмите Enter");
         }
         else{
-            System.out.println("К сожалению, вы проиграли в битве! Но вы не проиграли войне! Возьмите реванш, чтобы разгромить врага!");
+            System.out.println("К сожалению, вы проиграли в битве! Но вы не проиграли в войне! Возьмите реванш, чтобы разгромить врага!");
             System.out.println(level+" уровень");
             run("level_"+levelMover());
         }
