@@ -63,13 +63,14 @@ public class DocBook {
         if(data.get(docNumber)==null){
             error.append("This document does not exist\n");
         }
+        if(data.get(docNumber).getPaymentDocuments().containsKey(paymentDocNumber)){
+            error.append("this number of payment document exists\n");
+        }
         if(!error.isEmpty()){
             throw new IllegalArgumentException(error.toString());
         }
         else {
             data.get(docNumber).registerPaymentDoc(sum, paymentDocNumber, type, date);
-
-
         }
     }
     public List<Integer> getAllPayments() {
