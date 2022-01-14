@@ -93,6 +93,16 @@ public class doc_tests extends Assert {
                 docBook.registerPaymentDoc(100, -7, "number", TypeOfPaymentDoc.PaymentOrder, "20030204"));
         assertTrue(exc.getMessage().toLowerCase().contains("number of payment document is a positive number"));
     }
+    @Test
+    public void registerPaymentDoc_registerPayWithAlreadyExistedPaymentDocNumber_TrowsException(){
+        DocBook docBook = DocBook.create();
+        docBook.addDoc("number","date");
+        docBook.registerPaymentDoc(100, 1, "number", TypeOfPaymentDoc.PaymentOrder, "20030204");
+
+        var exc = assertThrows(IllegalArgumentException.class, () ->
+                docBook.registerPaymentDoc(100, 1, "number", TypeOfPaymentDoc.PaymentOrder, "20030204"));
+        assertTrue(exc.getMessage().toLowerCase().contains("this number of payment document exists"));
+    }
 
     //------------------------------------------------------------------------------------------------------------
     @Test
