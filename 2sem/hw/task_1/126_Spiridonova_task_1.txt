@@ -1,6 +1,6 @@
 DoubleLinkedList.java|33|"--size;" -> "++size"|pushBack_pushToEmptyList_sizeEqualsOne()
-DoubleLinkedList.java|17|"return dummy.getPrev();" -> "return dummy.getNext();"|pushFront_pushTwoElements_HeadAndTailIsCorrect()
-DoubleLinkedList.java|20|"return dummy.getNext();" -> "return dummy.getPrev();"|pushFront_pushTwoElements_HeadAndTailIsCorrect()
+DoubleLinkedList.java|17|"return dummy.getPrev();" -> "return dummy.getNext();"|pushFront_pushThreeElements_HeadAndTailIsCorrect()
+DoubleLinkedList.java|20|"return dummy.getNext();" -> "return dummy.getPrev();"|pushFront_pushThreeElements_HeadAndTailIsCorrect()
 DoubleLinkedList.java|28|"cur = cur.getPrev();" -> "cur = cur.getNext();"|get_getElementByIndex_GetCorrectElement()
 DoubleLinkedList.java|47|"node.getPrev().setPrev(node.getNext());" -> "node.getPrev().setNext(node.getNext());"|remove_removeElementFromList_ConnectionBetweenNextAndPrevCorrect()
 DoubleLinkedList.java|48|"node.getNext().setNext(node.getPrev());" -> "node.getNext().setPrev(node.getPrev());"|remove_removeElementFromList_ConnectionBetweenNextAndPrevCorrect()
