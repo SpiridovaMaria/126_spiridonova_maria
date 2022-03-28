@@ -12,8 +12,8 @@ MergeSort|32| to[resPos] = from[secondFocus++]; -> to[resPos++] = from[secondFoc
 MergeSort|18| mergeSortRec(sorting, buffer, middle + 1, end); -> mergeSortRec(buffer,sorting, middle + 1, end);|mergeSort_UnsortedArrayWithTwoSameElems_SortIsOk
 MergeSort|34| to[resPos++] = from[firstFocus]; -> to[resPos++] = from[firstFocus++];|mergeSort_UnsortedArray_SortIsOk
 
-MergeSort|10|swap(0, data.length - sortedSize); -> swap(0, data.length - sortedSize-1);|heapSort_sortUnsortedArrayWithTwoElems_sortIsOk
-MergeSort|17|for (int i = start; i >= 1; --i) -> for (int i = start; i >= 0; --i)|heapSort_sortedArray_arrayDoesNotChange
-MergeSort|18|siftDown(i, 2 * i, 2 * i + 1, data.length); -> siftDown(i, 2 * i+1, 2 * i + 2, data.length);|heapSort_unsortedArrayWithThreeElems_sortIsOK
-MergeSort|38|siftDown(right, 2 * right + 1, 2 * right + 2, data.length); -> siftDown(right, 2 * right + 1, 2 * right + 2, size);|heapSort_unsortedArray_sortIsOK
-MergeSort|34|siftDown(left, 2 * left, 2 * left + 1, size); -> siftDown(left, 2 * left+1, 2 * left + 2, size);|heapSort_unsortedArray2_sortIsOK
+HeapSort|10|swap(0, data.length - sortedSize); -> swap(0, data.length - sortedSize-1);|heapSort_sortUnsortedArrayWithTwoElems_sortIsOk
+HeapSort|17|for (int i = start; i >= 1; --i) -> for (int i = start; i >= 0; --i)|heapSort_sortedArray_arrayDoesNotChange
+HeapSort|18|siftDown(i, 2 * i, 2 * i + 1, data.length); -> siftDown(i, 2 * i+1, 2 * i + 2, data.length);|heapSort_unsortedArrayWithThreeElems_sortIsOK
+HeapSort|38|siftDown(right, 2 * right + 1, 2 * right + 2, data.length); -> siftDown(right, 2 * right + 1, 2 * right + 2, size);|heapSort_unsortedArray_sortIsOK
+HeapSort|34|siftDown(left, 2 * left, 2 * left + 1, size); -> siftDown(left, 2 * left+1, 2 * left + 2, size);|heapSort_unsortedArray2_sortIsOK
