@@ -9,25 +9,18 @@ public class Task3_Tests extends Assert{
         }
     }
     @Test
-    public void quickSort_sortUnsortedArrayWithTwoElems_sortIsOk(){
-        Integer[] arr = new Integer[]{5,3};
+    public void quickSort_sortUnsortedArray_sortIsOk(){
+        Integer[] arr = new Integer[]{3,1,2};
         QuickSort<Integer> qs = new QuickSort();
         qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{3, 5}, arr);
+        assertArrayEquals(new Integer[]{1,2,3}, arr);
     }
     @Test
-    public void quickSort_sortUnsortedArrayWithTwoSameElems_sortIsOk(){
+    public void quickSort_sortUnsortedArrayWithTwoSameElements_sortIsOk(){
         Integer[] arr = new Integer[]{1,5,1,3};
         QuickSort<Integer> qs = new QuickSort();
         qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{1,1,3, 5}, arr);
-    }
-    @Test
-    public void quickSort_UnsortedArray_sortIsOk(){
-        Integer[] arr = new Integer[]{1,5,1,3,5};
-        QuickSort<Integer> qs = new QuickSort();
-        qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{1,1,3,5, 5}, arr);
+        assertArrayEquals(new Integer[]{1,1,3,5}, arr);
     }
 
     //-----------------------mergeSort-----------------------------------------
