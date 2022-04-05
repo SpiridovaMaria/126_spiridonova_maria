@@ -50,29 +50,25 @@ public class DoubleLinkedList<T> {
     }
 
     public void insertListAfter(ListNode<T> node, DoubleLinkedList<T> list) {
-        if(list.isEmpty())
+        if(list.isEmpty() || list == this)
             return;
         list.getHead().setPrev(node);
         list.getTail().setNext(node.getNext());
         node.getNext().setPrev(list.getTail());
         node.setNext(list.getHead());
-
+        size+=list.getSize();
         list.dummy.setNext(list.dummy);
         list.dummy.setPrev(list.dummy);
-
-        size+=list.getSize();
     }
     public void insertListBefore(ListNode<T> node, DoubleLinkedList<T> list) {
-        if(list.isEmpty())
+        if(list.isEmpty() || list == this)
             return;
         list.getHead().setPrev(node.getPrev());
         list.getTail().setNext(node);
         node.getPrev().setNext(list.getHead());
         node.setPrev(list.getTail());
-
+        size+=list.getSize();
         list.dummy.setNext(list.dummy);
         list.dummy.setPrev(list.dummy);
-
-        size+=list.getSize();
     }
 }
