@@ -8,106 +8,113 @@ public class Task3_Tests extends Assert{
             return first - second;
         }
     }
+    //HeapSort--------------------------------------------------
     @Test
-    public void quickSort_sortUnsortedArrayWithTwoElems_sortIsOk(){
-        Integer[] arr = new Integer[]{2,1};
-        QuickSort<Integer> qs = new QuickSort();
-        qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{1,2}, arr);
-    }
-    @Test
-    public void quickSort_sortUnsortedArray_sortIsOk(){
-        Integer[] arr = new Integer[]{1,2,3,4,5,4,3,2,1};
-        QuickSort<Integer> qs = new QuickSort();
-        qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{1,1,2,2,3,3,4,4,5}, arr);
-    }
-    @Test
-    public void quickSort_sortBigUnsortedArray_sortIsOk(){
-        Integer[] arr = new Integer[]{5,4,2,7,3,2,2,1,1,3,4,1,6,7,3,2,1};
-        QuickSort<Integer> qs = new QuickSort();
-        qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{1,1,1,1,2,2,2,2,3,3,3,4,4,5,6,7,7}, arr);
-    }
-
-    //-----------------------mergeSort-----------------------------------------
-    @Test
-    public void mergeSort_sortUnsortedArrayWithTwoElems_sortIsOk(){
-        Integer[] arr = new Integer[]{3,2};
-        MergeSort<Integer> qs = new MergeSort();
-        qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{2, 3}, arr);
-    }
-    @Test
-    public void mergeSort_ArrayWithFirstUnsortedElems_sortIsOk(){
-        Integer[] arr = new Integer[]{2,1,2,3};
-        MergeSort<Integer> qs = new MergeSort();
-        qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{1,2,2,3}, arr);
-    }
-    @Test
-    public void mergeSort_UnsortedArrayWithTwoSameElems_SortIsOk(){
-        Integer[] arr = new Integer[]{5,1,4,1};
-        MergeSort<Integer> qs = new MergeSort();
-        qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{1,1,4,5}, arr);
-    }
-    @Test
-    public void mergeSort_UnsortedArray_SortIsOk(){
-        Integer[] arr = new Integer[]{5,3,1,3};
-        MergeSort<Integer> qs = new MergeSort();
-        qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{1,3,3,5}, arr);
+    public void HeapSort_ArrayWithSameElems_ArrDoesNotChange(){
+        HeapSort<Integer> hs = new HeapSort<>();
+        Integer[] data = {1, 1, 1};
+        hs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 1, 1}, data);
     }
 
     @Test
-    public void mergeSort_UnsortedArray2_SortIsOk(){
-        Integer[] arr = new Integer[]{1,1,3,5,5,3,1,5};
-        MergeSort<Integer> qs = new MergeSort();
-        qs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{1,1,1,3,3,5,5,5}, arr);
+    public void HeapSort_sortSortedArray_ArrDoesNotChange(){
+        HeapSort<Integer> hs = new HeapSort<>();
+        Integer[] data = {1, 2, 3};
+        hs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
     }
-
-
-
-
-    //----------------------------HeapSort----------------------------------------------
-    @Test
-    public void heapSort_sortUnsortedArrayWithTwoElems_sortIsOk(){
-        Integer[] arr = new Integer[]{10,10};
-        HeapSort<Integer> hs = new HeapSort();
-        hs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{10, 10}, arr);
-    }
-    @Test
-    public void heapSort_sortedArray_arrayDoesNotChange(){
-        Integer[] arr = new Integer[]{2,3};
-        HeapSort<Integer> hs = new HeapSort();
-        hs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{2, 3}, arr);
-    }
-    @Test
-    public void heapSort_unsortedArrayWithThreeElems_sortIsOK(){
-        Integer[] arr = new Integer[]{2,3,4};
-        HeapSort<Integer> hs = new HeapSort();
-        hs.sort(arr, new TestComparator());
-        assertArrayEquals(new Integer[]{2,3,4}, arr);
-    }
-
 
     @Test
-    public void heapSort_UnsortedArray_SortIsOk(){
-        Integer[] data = {9,1,6,3,1,9};
-        Sort<Integer> hSort= new HeapSort<>();
-        hSort.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[] {1,1,3,6,9,9}, data);
+    public void HeapSort_sortUnsortedArray_SortIsOk(){
+        HeapSort<Integer> hs = new HeapSort<>();
+        Integer[] data = {9, 2, 3, 6, 1, 0, 8, 5, 7, 4};
+        hs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, data);
     }
+
     @Test
-    public void heapSort_UnsortedArray2_SortIsOk(){
-        Integer[] data = {8,5,0,2,0,2,7,4,5,0,12,7};
-        Sort<Integer> hSort= new HeapSort<>();
-        hSort.sort(data, new TestComparator());
-        assertArrayEquals(new Integer[] {0,0,0,2,2,4,5,5,7,7,8,12}, data);
+    public void HeapSort_sortUnsortedArrayWithSameElems_SortIsOk(){
+        HeapSort<Integer> hs = new HeapSort<>();
+        Integer[] data = {9, 2, 3, 6, 1, 0, 8, 5, 7, 4, 1};
+        hs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9}, data);
     }
+
+    //MergeSort---------------------------------------------------
+
+    @Test
+    public void MergeSort_sortSortedArray_ArrayDoesNotChange(){
+        MergeSort<Integer> ms = new MergeSort<>();
+        Integer[] data = {1, 2, 3};
+        ms.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
+    }
+
+    @Test
+    public void MergeSort_SortUnsortedArray_SortIsOk(){
+        MergeSort<Integer> ms = new MergeSort<>();
+        Integer[] data = {1, 3, 2};
+        ms.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
+    }
+
+    @Test
+    public void MergeSort_sortHugeUnsortedArray_SortIsOk(){
+        MergeSort<Integer> ms = new MergeSort<>();
+        Integer[] data = {9, 2, 3, 6, 1, 0, 8, 5, 7, 4};
+        ms.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, data);
+    }
+
+    @Test
+    public void MergeSort_SortArrayWithNegativeElems_SortIsOk(){
+        MergeSort<Integer> ms = new MergeSort<>();
+        Integer[] data = {1, 0, -1};
+        ms.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{-1, 0, 1}, data);
+    }
+
+    @Test
+    public void MergeSort_sortUnsortedArrayWithSameElems_SortIsOk(){
+        MergeSort<Integer> ms = new MergeSort<>();
+        Integer[] data = {0, 0, 1, 2, 2, 1, 2};
+        ms.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{0, 0, 1, 1, 2, 2, 2}, data);
+    }
+
+    //QuickSort----------------------------
+    @Test
+    public void QuickSort_sortWithSameElems_ArrayDoesNotChange(){
+        QuickSort<Integer> qs = new QuickSort<>();
+        Integer[] data = {1, 1, 1};
+        qs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 1, 1}, data);
+    }
+
+    @Test
+    public void QuickSort_sortUnsortedArray_SortIsCorrect(){
+        QuickSort<Integer> qs = new QuickSort<>();
+        Integer[] data = {1, 3, 2};
+        qs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{1, 2, 3}, data);
+    }
+
+    @Test
+    public void QuickSort_sortUnsortedArrayWithNegativeElems_SortIsOk(){
+        QuickSort<Integer> qs = new QuickSort<>();
+        Integer[] data = {1, 0, -1};
+        qs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{-1, 0, 1}, data);
+    }
+
+    @Test
+    public void QuickSort_sortHugeUnsortedArray_SortIsOk(){
+        QuickSort<Integer> qs = new QuickSort<>();
+        Integer[] data = {9, 2, 3, 6, 1, 0, 8, 5, 7, 4};
+        qs.sort(data, new TestComparator());
+        assertArrayEquals(new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, data);
+    }
+
 
 }
