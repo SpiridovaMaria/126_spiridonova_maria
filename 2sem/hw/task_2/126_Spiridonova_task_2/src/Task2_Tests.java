@@ -47,7 +47,7 @@ public class Task2_Tests extends Assert{
         assertArrayEquals(new Integer[]{1,2,3,4,5}, data);
     }
 
-//-----------------SelectionSort----------------------------------------------
+    //-----------------SelectionSort----------------------------------------------
     @Test
     public void selectionSort_ArrayWithTheFirstMaxElem_SortOk(){
         SelectionSort<Integer> ss = new SelectionSort<>();
