@@ -1,0 +1,4 @@
+SimpleBinarySearchTree.java|150|node.parent.right = newNode; -> else {node.parent.right = newNode;}|delete_DeleteHalfElements_TreeStructureIsCorrect
+SimpleBinarySearchTree.java|63|return; -> ++size; return;|delete_DeleteHalfElements_TreeStructureIsCorrect
+
+
