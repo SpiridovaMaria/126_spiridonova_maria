@@ -1,5 +1,7 @@
 import org.junit.*;
 
+import javax.swing.tree.TreeNode;
+
 public class SimpleBinarySearchTreeTests extends Assert {
     class Comparator implements MyComparator<Integer> {
         @Override
@@ -72,4 +74,6 @@ public class SimpleBinarySearchTreeTests extends Assert {
         assertArrayEquals(new Integer[] {-1, 1, 5}, tree.getOrderedItems().toArray());
         assertEquals(3, tree.size());
     }
+
+
 }

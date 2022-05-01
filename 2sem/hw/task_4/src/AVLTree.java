@@ -313,4 +313,7 @@ public class AVLTree<T> implements BinarySearchTree<T> {
             return searchRec(root.left, value);
         return searchRec(root.right, value);
     }
+    public T show(AVLTreeNode root){
+        return (T) root.right;
+    }
 }

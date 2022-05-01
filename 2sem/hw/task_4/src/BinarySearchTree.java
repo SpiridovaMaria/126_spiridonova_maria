@@ -12,4 +12,5 @@ public interface BinarySearchTree<T> {
     T successor(T value);
     boolean search(T value);
     ArrayList<T> getOrderedItems();
+
 }
