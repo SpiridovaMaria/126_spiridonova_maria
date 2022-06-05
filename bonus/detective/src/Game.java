@@ -7,6 +7,7 @@ public class Game {
     private String level;
     private int choice;
     private Field field;
+    private Choice choiceB;
 
     public Game(){
         level = "level_1";
@@ -26,6 +27,7 @@ public class Game {
     public void run(String levelName) {
         prepareGame(levelName);
         drawField();
+        drawChoice(levelName);
         if(!isLastLevel()) {
             processCommand();
         }
@@ -37,6 +39,13 @@ public class Game {
     }
     private void drawField() {
         System.out.println(field.getText());
+
+    }
+    private void drawChoice(String levelName){
+        for(int i=1;i<=3;i++){
+            choiceB = new ChoiceBuilder().buildChoice(levelName,i);
+            System.out.println(choiceB.getText());
+        }
     }
     public boolean isLastLevel(){
         return counter>2;
@@ -59,21 +68,23 @@ public class Game {
 
     private void processCommand() {
         Scanner sc = new Scanner(System.in);
-        int x = sc.nextInt();
+        int option = sc.nextInt();
 
-        if(x==1) {
-           choice = 1;
+        if( option==1) {
+            choice = 1;
         }
-        else if (x==2) {
+        else if (option==2 ) {
             choice = 2;
         }
-        else if (x==3) {
+        else if (option==3) {
             choice = 3;
         }
         else{
             System.out.println("Команда выполнена неверно.");
             choice=0;
+            endingGame();
         }
+
 
     }
 }

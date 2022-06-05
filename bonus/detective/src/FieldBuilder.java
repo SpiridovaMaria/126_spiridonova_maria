@@ -7,7 +7,7 @@ public class FieldBuilder {
     public Field buildField(String levelName) {
         InputStreamReader reader = null;
         try {
-            reader = new InputStreamReader(new FileInputStream("texts/" + levelName+".txt"));
+            reader = new InputStreamReader(new FileInputStream("texts/" + levelName+"/"+levelName+".txt"));
             String text;
             Scanner sc = new Scanner(reader);
             text = sc.nextLine();
