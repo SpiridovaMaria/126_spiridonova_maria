@@ -42,7 +42,7 @@ public class Game {
 
     }
     private void drawChoice(String levelName){
-        for(int i=1;i<=3;i++){
+        for(int i=1;i<=2;i++){
             choiceB = new ChoiceBuilder().buildChoice(levelName,i);
             System.out.println(choiceB.getText());
         }
@@ -76,9 +76,7 @@ public class Game {
         else if (option==2 ) {
             choice = 2;
         }
-        else if (option==3) {
-            choice = 3;
-        }
+
         else{
             System.out.println("Команда выполнена неверно.");
             choice=0;
