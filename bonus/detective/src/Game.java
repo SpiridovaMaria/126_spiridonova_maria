@@ -25,19 +25,16 @@ public class Game {
     }
 
     public void run(String levelName) {
-        prepareGame(levelName);
-        drawField();
-        drawChoice(levelName);
+        drawField(levelName);
         if(!isLastLevel()) {
+            drawChoice(levelName);
             processCommand();
         }
         endingGame();
     }
 
-    private void prepareGame(String levelName) {
+    private void drawField(String levelName) {
         field = new FieldBuilder().buildField(levelName);
-    }
-    private void drawField() {
         System.out.println(field.getText());
 
     }
@@ -48,7 +45,7 @@ public class Game {
         }
     }
     public boolean isLastLevel(){
-        return counter>2;
+        return counter>6;
     }
 
     private void endingGame() {
@@ -68,12 +65,12 @@ public class Game {
 
     private void processCommand() {
         Scanner sc = new Scanner(System.in);
-        int option = sc.nextInt();
+        String option = sc.nextLine();
 
-        if( option==1) {
+        if( option.equals("1")) {
             choice = 1;
         }
-        else if (option==2 ) {
+        else if (option.equals("2")) {
             choice = 2;
         }
 
